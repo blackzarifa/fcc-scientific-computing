@@ -11,11 +11,8 @@ def caesar(text, shift):
         if charIdx == -1:
             cipher += i
 
-        if charIdx >= len(alphabet) - shift:
-            charIdx -= len(alphabet)
-
-        cipherChar = alphabet[charIdx + shift]
-        cipher += cipherChar
+        newIdx = (charIdx + shift) % len(alphabet)
+        cipher += alphabet[newIdx]
 
     return cipher
 
