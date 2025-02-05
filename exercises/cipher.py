@@ -1,7 +1,3 @@
-text = "Hello Worldxyz"
-shift = 3
-
-
 def caesar(text, shift):
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     cipher = ""
@@ -17,4 +13,5 @@ def caesar(text, shift):
     return cipher
 
 
-print(caesar(text, shift))
+text = "Hello World"
+print(caesar(text, 3))
