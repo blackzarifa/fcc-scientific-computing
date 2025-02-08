@@ -5,7 +5,7 @@ def caesar(text, shift):
     cipher = ""
 
     for i in text:
-        charIdx = ALPHABET.index(i.lower())
+        charIdx = ALPHABET.find(i.lower())
         if charIdx == -1:
             cipher += i
 
