@@ -15,5 +15,25 @@ def caesar(text, shift):
     return cipher
 
 
+def vigenere(text, key):
+    cipher = ""
+    text = text.lower()
+    key = key.lower()
+
+    for i in range(len(text)):
+        char = text[i]
+        alphabetIdx = ALPHABET.find(char)
+        if alphabetIdx == -1:
+            cipher += char
+
+        keyChar = key[i % len(key)]
+        keyIdx = ALPHABET.index(keyChar)
+
+        cipher += ALPHABET[(alphabetIdx + keyIdx) % len(ALPHABET)]
+
+    return cipher
+
+
 text = "Hello World"
 print(caesar(text, 3))
+print(vigenere(text, "python"))
