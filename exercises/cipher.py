@@ -8,6 +8,7 @@ def caesar(text, shift):
         charIdx = ALPHABET.find(i.lower())
         if charIdx == -1:
             cipher += i
+            continue
 
         newIdx = (charIdx + shift) % len(ALPHABET)
         cipher += ALPHABET[newIdx]
@@ -25,6 +26,7 @@ def vigenere(text, key):
         alphabetIdx = ALPHABET.find(char)
         if alphabetIdx == -1:
             cipher += char
+            continue
 
         keyChar = key[i % len(key)]
         keyIdx = ALPHABET.index(keyChar)
