@@ -1,6 +1,6 @@
 def verifyCardNumber(number):
     oddSum = sumOddNumbers(number)
-    print(oddSum)
+    evenNumbers = sumEvenNumbers(number)
 
 
 def sumOddNumbers(number):
@@ -9,6 +9,23 @@ def sumOddNumbers(number):
 
     for i in oddNumbers:
         sum += int(i)
+
+    return sum
+
+
+def sumEvenNumbers(number):
+    sum = 0
+    evenNumbers = number[::2]
+
+    for i in evenNumbers:
+        double = int(i) * 2
+        if double <= 9:
+            sum += double
+            continue
+
+        firstNum = double // 10
+        secondNum = double % 10
+        sum += firstNum + secondNum
 
     return sum
 
