@@ -1,6 +1,9 @@
 def verifyCardNumber(number):
     oddSum = sumOddNumbers(number)
-    evenNumbers = sumEvenNumbers(number)
+    evenSum = sumEvenNumbers(number)
+    total = oddSum + evenSum
+
+    return 0 == total % 10
 
 
 def sumOddNumbers(number):
@@ -35,7 +38,8 @@ def main():
     translation = str.maketrans({'-': '', ' ': ''})
     translatedNumber = cardNumber.translate(translation)
 
-    verifyCardNumber(translatedNumber)
+    isValid = verifyCardNumber(translatedNumber)
+    print('Valid!' if isValid else 'Invalid!')
 
 
 main()
