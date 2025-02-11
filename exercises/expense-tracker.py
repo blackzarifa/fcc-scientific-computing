@@ -18,7 +18,7 @@ def main():
                 addExpense(expenses, amount, category)
             case 2:
                 print('\nAll Expenses:')
-                print_expenses(expenses)
+                printExpenses(expenses)
             case 3:
                 pass
             case 4:
@@ -32,7 +32,7 @@ def addExpense(expenses, amount, category):
     expenses.append({'amount': amount, 'category': category})
 
 
-def print_expenses(expenses):
+def printExpenses(expenses):
     for expense in expenses:
         print('Amount: ', expense["amount"], ', Category: ', expense["category"])
 
