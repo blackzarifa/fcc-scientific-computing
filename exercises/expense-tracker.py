@@ -13,9 +13,12 @@ def main():
 
         match choice:
             case 1:
-                pass
+                amount = float(input('Enter amount: '))
+                category = input('Enter category: ')
+                addExpense(expenses, amount, category)
             case 2:
-                pass
+                print('\nAll Expenses:')
+                print_expenses(expenses)
             case 3:
                 pass
             case 4:
@@ -23,6 +26,15 @@ def main():
             case 5:
                 print('Exiting the Expense Tracker...')
                 break
+
+
+def addExpense(expenses, amount, category):
+    expenses.append({'amount': amount, 'category': category})
+
+
+def print_expenses(expenses):
+    for expense in expenses:
+        print('Amount: ', expense["amount"], ', Category: ', expense["category"])
 
 
 main()
