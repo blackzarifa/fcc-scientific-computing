@@ -20,9 +20,12 @@ def main():
                 print('\nAll Expenses:')
                 printExpenses(expenses)
             case 3:
-                pass
+                print('\nTotal Expenses: ', totalExpenses(expenses))
             case 4:
-                pass
+                category = input('Enter category to filter: ')
+                print(f'\nExpenses for {category}:')
+                categoryExpenses = filterExpensesByCategory(expenses, category)
+                printExpenses(categoryExpenses)
             case 5:
                 print('Exiting the Expense Tracker...')
                 break
@@ -35,6 +38,16 @@ def addExpense(expenses, amount, category):
 def printExpenses(expenses):
     for expense in expenses:
         print('Amount: ', expense["amount"], ', Category: ', expense["category"])
+
+
+def totalExpenses(expenses):
+    getAmount = lambda expense: expense['amount']
+    return sum(map(getAmount, expenses))
+
+
+def filterExpensesByCategory(expenses, category):
+    isCategoryEqual = lambda expense: expense['category'] == category
+    return filter(isCategoryEqual, expenses)
 
 
 main()
