@@ -1,3 +1,7 @@
+def main():
+    sqrRootBisection(16)
+
+
 def sqrRootBisection(target, tolerance=1e-7, maxIterations=100):
     if target < 0:
         raise ValueError(
@@ -31,3 +35,6 @@ def sqrRootBisection(target, tolerance=1e-7, maxIterations=100):
         print(f'The square root of {target} is approximately {root}')
 
     return root
+
+
+main()
