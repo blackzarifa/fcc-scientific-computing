@@ -9,8 +9,25 @@ def sqrRootBisection(target, tolerance=1e-7, maxIterations=100):
         return target
 
     low = 0
-    high = max(1, target)
+    high = target
     root = None
 
     for _ in range(maxIterations):
-        pass
+        mid = (high + low) / 2
+        squareMid = mid**2
+
+        if abs(squareMid - target) < tolerance:
+            root = mid
+            break
+
+        if squareMid < target:
+            low = mid
+        else:
+            high = mid
+
+    if root is None:
+        print(f"Failed to converge within {maxIterations} iterations.")
+    else:
+        print(f'The square root of {target} is approximately {root}')
+
+    return root
