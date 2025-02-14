@@ -7,14 +7,15 @@ def arithmetic_arranger(problems, show_answers=False):
         splitProblems.append(p.split(' '))
 
     for p in splitProblems:
-        if p[1] != '+' or p[1] != '-':
+        len1 = len(p[0])
+        len2 = len(p[2])
         if p[1] != '+' and p[1] != '-':
             print("Error: Operator must be '+' or '-'.")
             break
         if not p[0].isdigit() or not p[2].isdigit():
             print('Error: Numbers must only contain digits.')
             break
-        if len(p[0]) > 4 or len(p[2]) > 4:
+        if len1 > 4 or len2 > 4:
             print('Error: Numbers cannot be more than four digits.')
             break
 
