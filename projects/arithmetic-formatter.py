@@ -38,6 +38,10 @@ def arithmetic_arranger(problems, show_answers=False):
         for _ in range(maxLen):
             dashLine += '-'
 
+        firstLine += '    '
+        secondLine += '    '
+        dashLine += '    '
+        answerLine += '    '
         print(firstLine)
         print(secondLine)
         print(dashLine)
