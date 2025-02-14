@@ -29,7 +29,10 @@ def arithmetic_arranger(problems, show_answers=False):
 
         for _ in range(maxLen - len1):
             firstLine += ' '
-        for _ in range(maxLen - len2):
+        for i in range(maxLen - len2):
+            if i == 0:
+                secondLine += p[1]
+                continue
             secondLine += ' '
 
         firstLine += p[0]
