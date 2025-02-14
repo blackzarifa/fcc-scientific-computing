@@ -8,6 +8,7 @@ def arithmetic_arranger(problems, show_answers=False):
 
     for p in splitProblems:
         if p[1] != '+' or p[1] != '-':
+        if p[1] != '+' and p[1] != '-':
             print("Error: Operator must be '+' or '-'.")
             break
         if not p[0].isdigit() or not p[2].isdigit():
