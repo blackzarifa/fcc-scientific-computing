@@ -2,9 +2,7 @@ def arithmetic_arranger(problems, show_answers=False):
     if len(problems) > 5:
         return 'Error: Too many problems.'
 
-    splitProblems = []
-    for p in problems:
-        splitProblems.append(p.split(' '))
+    splitProblems = [p.split() for p in problems]
 
     firstLine = ''
     secondLine = ''
