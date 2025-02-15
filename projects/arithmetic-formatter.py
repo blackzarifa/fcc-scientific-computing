@@ -46,7 +46,10 @@ def arithmetic_arranger(problems, show_answers=False):
         dashLine += '    '
 
         if show_answers:
-            answer = str(int(p[0]) + int(p[2]))
+            n1 = int(p[0])
+            n2 = int(p[2])
+            answer = str(n1 + n2 if p[1] == '+' else n1 - n2)
+
             for _ in range(maxLen - len(answer)):
                 answerLine += ' '
             answerLine += f'{answer}    '
