@@ -54,10 +54,10 @@ def arithmetic_arranger(problems, show_answers=False):
                 answerLine += ' '
             answerLine += f'{answer}    '
 
-        print(firstLine)
-        print(secondLine)
-        print(dashLine)
-        print(answerLine)
+    print(firstLine)
+    print(secondLine)
+    print(dashLine)
+    print(answerLine)
 
 
 def main():
