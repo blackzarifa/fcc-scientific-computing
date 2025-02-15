@@ -44,10 +44,17 @@ def arithmetic_arranger(problems, show_answers=False):
         firstLine += '    '
         secondLine += '    '
         dashLine += '    '
-        answerLine += '    '
+
+        if show_answers:
+            answer = str(int(p[0]) + int(p[2]))
+            for _ in range(maxLen - len(answer)):
+                answerLine += ' '
+            answerLine += f'{answer}    '
+
         print(firstLine)
         print(secondLine)
         print(dashLine)
+        print(answerLine)
 
 
 def main():
