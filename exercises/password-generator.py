@@ -3,7 +3,7 @@ import string
 import re
 
 
-def generate_password(length, nums, special_chars, uppercase, lowercase):
+def generate_password(length=16, nums=1, special_chars=1, uppercase=1, lowercase=1):
     letters = string.ascii_letters
     digits = string.digits
     symbols = string.punctuation
@@ -31,7 +31,7 @@ def generate_password(length, nums, special_chars, uppercase, lowercase):
 
 
 def main():
-    pw = generate_password(8, 1, 1, 1, 1)
+    pw = generate_password(length=8)
     print(pw)
 
 
