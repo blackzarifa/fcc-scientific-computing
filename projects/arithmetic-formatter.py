@@ -4,62 +4,38 @@ def arithmetic_arranger(problems, show_answers=False):
 
     splitProblems = [p.split() for p in problems]
 
-    firstLine = ''
-    secondLine = ''
-    dashLine = ''
-    answerLine = ''
+    for n1, op, n2 in splitProblems:
+        if op not in {'+', '-'}:
+            return "Error: Operator must be '+' or '-'."
+        if not (n1.isdigit() and n2.isdigit()):
+            return 'Error: Numbers must only contain digits.'
+        if len(n1) > 4 or len(n2) > 4:
+            return 'Error: Numbers cannot be more than four digits.'
 
-    for p in splitProblems:
-        len1 = len(p[0])
-        len2 = len(p[2])
+    lines = ['', '', '']
+    if show_answers:
+        lines.append('')
 
-        if p[1] != '+' and p[1] != '-':
-            print("Error: Operator must be '+' or '-'.")
-            break
-        if not p[0].isdigit() or not p[2].isdigit():
-            print('Error: Numbers must only contain digits.')
-            break
-        if len1 > 4 or len2 > 4:
-            print('Error: Numbers cannot be more than four digits.')
-            break
+    for n1, op, n2 in splitProblems:
+        maxLen = max(len(n1), len(n2)) + 2
 
-        maxLen = max(len1, len2) + 2
-
-        for _ in range(maxLen - len1):
-            firstLine += ' '
-        for i in range(maxLen - len2):
-            if i == 0:
-                secondLine += p[1]
-                continue
-            secondLine += ' '
-
-        firstLine += p[0]
-        secondLine += p[2]
-
-        for _ in range(maxLen):
-            dashLine += '-'
-
-        firstLine += '    '
-        secondLine += '    '
-        dashLine += '    '
+        lines[0] += f"{n1:>{maxLen}}    "
+        lines[1] += f"{op}{n2:>{maxLen-1}}    "
+        lines[2] += f"{'-'*maxLen}    "
 
         if show_answers:
-            n1 = int(p[0])
-            n2 = int(p[2])
-            answer = str(n1 + n2 if p[1] == '+' else n1 - n2)
+            int1 = int(n1)
+            int2 = int(n2)
+            answer = str(int1 + int2 if op == '+' else int1 - int2)
+            lines[3] += f'{answer:>{maxLen}}    '
 
-            for _ in range(maxLen - len(answer)):
-                answerLine += ' '
-            answerLine += f'{answer}    '
-
-    print(firstLine)
-    print(secondLine)
-    print(dashLine)
-    print(answerLine)
+    return '\n'.join(line.rstrip() for line in lines)
 
 
 def main():
-    arithmetic_arranger(["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True)
+    res = arithmetic_arranger(["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True)
+
+    print(res)
 
 
 main()
