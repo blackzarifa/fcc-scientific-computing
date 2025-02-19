@@ -7,8 +7,8 @@ graph = {
 
 
 def shortest_path(graph, start):
-    unvisited = []
-    distances = {}
+    unvisited = list(graph)
+    distances = {node: 0 if node == start else float('inf') for node in graph}
 
     for node in graph:
         unvisited.append(node)
