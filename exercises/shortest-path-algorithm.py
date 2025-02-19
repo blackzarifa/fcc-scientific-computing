@@ -6,7 +6,7 @@ graph = {
 }
 
 
-def shortest_path(graph, start):
+def shortest_path(graph, start, target=''):
     unvisited = list(graph)
     distances = {node: 0 if node == start else float('inf') for node in graph}
 
@@ -29,8 +29,17 @@ def shortest_path(graph, start):
 
         unvisited.remove(current)
 
-    print(f'Unvisited: {unvisited}\nDistances: {distances}\nPaths: {paths}')
+    targets = [target] if target else graph
+    for node in targets:
+        if node == start:
+            continue
+
+        print(
+            f'\n{start}-{node} distance: {distances[node]}\nPath: {" -> ".join(paths[node])}'
+        )
+
+    return distances, paths
 
 
 if __name__ == '__main__':
-    shortest_path(graph, 'A')
+    shortest_path(graph, 'A', 'D')
