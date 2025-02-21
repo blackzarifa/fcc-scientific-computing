@@ -4,8 +4,8 @@ NUM_MOVES = 2**NUM_DISKS - 1
 rods = {'A': list(range(NUM_DISKS, 0, -1)), 'B': [], 'C': []}
 
 
-def move():
+def move(n, source, auxiliary, target):
     pass
 
 
-move()
+move(NUM_DISKS, 'A', 'B', 'C')
