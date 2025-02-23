@@ -30,8 +30,10 @@ def move(n, source, auxiliary, target):
             make_allowed_move(source, target)
         elif remainder == 2:
             print(f'Move {i + 1} allowed between {source} and {auxiliary}')
+            make_allowed_move(source, auxiliary)
         elif remainder == 0:
             print(f'Move {i + 1} allowed between {auxiliary} and {target}')
+            make_allowed_move(auxiliary, target)
 
 
 move(NUM_DISKS, 'A', 'B', 'C')
