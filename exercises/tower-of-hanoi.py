@@ -18,4 +18,4 @@ def move(n, source, auxiliary, target):
     move(n - 1, auxiliary, source, target)
 
 
-move(NUM_DISKS, 'A', 'B', 'C')
+move(NUM_DISKS, A, B, C)
