@@ -24,7 +24,13 @@ def add_time(start, duration):
         if new_hours == 0:
             new_hours = 12
 
-    new_time = [new_hours, new_minutes, extra_periods]
+    # Period
+    is_am = start_arr[2] == 'AM'
+    if extra_periods % 2:
+        is_am = not is_am
+    new_period = 'AM' if is_am else 'PM'
+
+    new_time = [new_hours, new_minutes, extra_periods, new_period]
     return new_time
 
 
