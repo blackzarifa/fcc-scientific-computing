@@ -7,9 +7,15 @@ def add_time(start, duration):
     ]
     duration_arr = [int(duration[0 : duration.index(':')]), int(duration[-2:])]
 
-    new_time = duration_arr
+    new_hours = 0
+    new_minutes = start_arr[1] + duration_arr[1]
+    if new_minutes >= 60:
+        new_minutes = new_minutes - 60
+        new_hours += 1
+
+    new_time = [new_hours, new_minutes]
     return new_time
 
 
 if __name__ == '__main__':
-    print(add_time('10:37 PM', '3:30'))
+    print(add_time('10:31 PM', '3:59'))
