@@ -16,7 +16,7 @@ def add_time(start, duration):
         new_hours += 1
 
     # Hours
-    new_hours += start_arr[0] + duration_arr[0]
+    new_hours += (start_arr[0] if start_arr[0] != 12 else 0) + duration_arr[0]
     extra_periods = 0
     if new_hours >= 12:
         extra_periods = new_hours // 12
