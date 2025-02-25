@@ -30,7 +30,15 @@ def add_time(start, duration):
         is_am = not is_am
     new_period = 'AM' if is_am else 'PM'
 
-    new_time = [new_hours, new_minutes, extra_periods, new_period]
+    # Count days
+    extra_days = extra_periods // 2
+    days_str = ''
+    if extra_days == 1:
+        days_str = '(next day)'
+    elif extra_days > 1:
+        days_str = 'f({extra_days} days later)'
+
+    new_time = [new_hours, new_minutes, extra_periods, new_period, days_str]
     return new_time
 
 
