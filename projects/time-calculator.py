@@ -43,14 +43,15 @@ def add_time(start, duration, day=''):
             new_hours = 12
 
     # Period
-    is_am = start_arr[2] == 'AM'
+    is_am_original = start_arr[2] == 'AM'
+    is_am = is_am_original
     if extra_periods % 2:
         is_am = not is_am
     new_period = 'AM' if is_am else 'PM'
 
     # Count days
     extra_days = extra_periods // 2
-    if not is_am and extra_periods % 2 == 1:
+    if not is_am_original and extra_periods % 2 == 1:
         extra_days += 1
 
     days_str = ''
@@ -62,7 +63,7 @@ def add_time(start, duration, day=''):
     # Count Weekday
     day_number += extra_days
     new_day = ''
-    if day_number > 0:
+    if day != '':
         new_day = WEEKDAYS[day_number % 7]
 
     new_time = [new_hours, new_minutes, extra_periods, new_period, days_str, new_day]
