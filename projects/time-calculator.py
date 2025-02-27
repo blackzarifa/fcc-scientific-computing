@@ -57,6 +57,7 @@ def add_time(start, duration, day=''):
     elif extra_days > 1:
         days_str = 'f({extra_days} days later)'
 
+    # Count Weekday
     new_day = ''
     if day_number > 0:
         new_day = WEEKDAYS[day_number % 7]
