@@ -64,7 +64,7 @@ def add_time(start, duration, day=''):
     day_number += extra_days
     new_day = ''
     if day != '':
-        new_day = WEEKDAYS[day_number % 7]
+        new_day = WEEKDAYS[day_number % 7].capitalize()
         return f'{new_hours}:{new_minutes} {new_period}, {new_day} {days_str}'
 
     return f'{new_hours}:{new_minutes} {new_period} {days_str}'
