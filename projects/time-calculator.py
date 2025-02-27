@@ -65,9 +65,9 @@ def add_time(start, duration, day=''):
     new_day = ''
     if day != '':
         new_day = WEEKDAYS[day_number % 7]
+        return f'{new_hours}:{new_minutes} {new_period}, {new_day} {days_str}'
 
-    new_time = [new_hours, new_minutes, extra_periods, new_period, days_str, new_day]
-    return new_time
+    return f'{new_hours}:{new_minutes} {new_period} {days_str}'
 
 
 if __name__ == '__main__':
