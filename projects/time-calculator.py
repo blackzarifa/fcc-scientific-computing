@@ -1,11 +1,11 @@
 WEEKDAYS = {
-    1: 'sunday',
-    2: 'monday',
-    3: 'tuesday',
-    4: 'wednesday',
-    5: 'thursday',
-    6: 'friday',
-    7: 'saturday',
+    0: 'sunday',
+    1: 'monday',
+    2: 'tuesday',
+    3: 'wednesday',
+    4: 'thursday',
+    5: 'friday',
+    6: 'saturday',
 }
 
 
@@ -50,14 +50,17 @@ def add_time(start, duration, day=''):
 
     # Count days
     extra_days = extra_periods // 2
-    day_number += extra_days
+    if not is_am and extra_periods % 2 == 1:
+        extra_days += 1
+
     days_str = ''
     if extra_days == 1:
         days_str = '(next day)'
     elif extra_days > 1:
-        days_str = 'f({extra_days} days later)'
+        days_str = f'({extra_days} days later)'
 
     # Count Weekday
+    day_number += extra_days
     new_day = ''
     if day_number > 0:
         new_day = WEEKDAYS[day_number % 7]
@@ -68,5 +71,5 @@ def add_time(start, duration, day=''):
 
 if __name__ == '__main__':
     print(add_time('11:00 PM', '1:00'))
-    print(add_time('12:00 PM', '24:00', 'tuesday'))
+    print(add_time('12:00 PM', '12:00', 'tuesday'))
     print(add_time('12:00 PM', '2:00'))
