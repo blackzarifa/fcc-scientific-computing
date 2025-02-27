@@ -1,4 +1,22 @@
-def add_time(start, duration):
+WEEKDAYS = {
+    1: 'sunday',
+    2: 'monday',
+    3: 'tuesday',
+    4: 'wednesday',
+    5: 'thursday',
+    6: 'friday',
+    7: 'saturday',
+}
+
+
+def add_time(start, duration, day=''):
+    # Day value
+    day_number = 0
+    if day != '':
+        day_number = next(
+            key for key, value in WEEKDAYS.items() if value == day.lower()
+        )
+
     # Arrays
     colon_index = start.index(':')
     start_arr = [
@@ -32,17 +50,22 @@ def add_time(start, duration):
 
     # Count days
     extra_days = extra_periods // 2
+    day_number += extra_days
     days_str = ''
     if extra_days == 1:
         days_str = '(next day)'
     elif extra_days > 1:
         days_str = 'f({extra_days} days later)'
 
-    new_time = [new_hours, new_minutes, extra_periods, new_period, days_str]
+    new_day = ''
+    if day_number > 0:
+        new_day = WEEKDAYS[day_number % 7]
+
+    new_time = [new_hours, new_minutes, extra_periods, new_period, days_str, new_day]
     return new_time
 
 
 if __name__ == '__main__':
     print(add_time('11:00 PM', '1:00'))
-    print(add_time('12:00 PM', '12:00'))
+    print(add_time('12:00 PM', '24:00', 'tuesday'))
     print(add_time('12:00 PM', '2:00'))
