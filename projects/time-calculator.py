@@ -32,6 +32,7 @@ def add_time(start, duration, day=''):
     if new_minutes >= 60:
         new_minutes = new_minutes - 60
         new_hours += 1
+    new_minutes = f'{new_minutes:02d}'
 
     # Hours
     new_hours += (start_arr[0] if start_arr[0] != 12 else 0) + duration_arr[0]
@@ -41,6 +42,7 @@ def add_time(start, duration, day=''):
         new_hours -= extra_periods * 12
         if new_hours == 0:
             new_hours = 12
+    new_hours = f'{new_hours:02d}'
 
     # Period
     is_am_original = start_arr[2] == 'AM'
