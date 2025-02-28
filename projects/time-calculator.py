@@ -57,18 +57,18 @@ def add_time(start, duration, day=''):
 
     days_str = ''
     if extra_days == 1:
-        days_str = '(next day)'
+        days_str = ' (next day)'
     elif extra_days > 1:
-        days_str = f'({extra_days} days later)'
+        days_str = f' ({extra_days} days later)'
 
     # Count Weekday
     day_number += extra_days
     new_day = ''
     if day != '':
         new_day = WEEKDAYS[day_number % 7].capitalize()
-        return f'{new_hours}:{new_minutes} {new_period}, {new_day} {days_str}'
+        return f'{new_hours}:{new_minutes} {new_period}, {new_day}{days_str}'
 
-    return f'{new_hours}:{new_minutes} {new_period} {days_str}'
+    return f'{new_hours}:{new_minutes} {new_period}{days_str}'
 
 
 if __name__ == '__main__':
