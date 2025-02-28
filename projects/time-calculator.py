@@ -42,7 +42,6 @@ def add_time(start, duration, day=''):
         new_hours -= extra_periods * 12
         if new_hours == 0:
             new_hours = 12
-    new_hours = f'{new_hours:02d}'
 
     # Period
     is_am_original = start_arr[2] == 'AM'
