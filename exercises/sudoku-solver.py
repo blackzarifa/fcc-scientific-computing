@@ -24,7 +24,15 @@ class Board:
             for cur_col in range(col_start, col_start + 3):
                 if self.board[cur_row][cur_col] == num:
                     return False
+
         return True
+
+    def is_valid(self, empty, num):
+        row, col = empty
+        valid_in_row = self.valid_in_row(row, num)
+        valid_in_col = self.valid_in_col(col, num)
+        valid_in_square = self.valid_in_square(row, col, num)
+        return all([valid_in_row, valid_in_col, valid_in_square])
 
 
 PUZZLE = [
