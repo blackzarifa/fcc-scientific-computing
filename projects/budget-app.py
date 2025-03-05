@@ -6,7 +6,6 @@ class Category:
 
     def _add_to_ledger(self, amount, description):
         self.ledger.append({'amount': amount, 'description': description})
-        print(self.ledger)
 
     def deposit(self, value, description=''):
         self.value += value
@@ -23,6 +22,14 @@ class Category:
     def get_balance(self):
         return self.value
 
+    def transfer(self, value, category):
+        withdraw_success = self.withdraw(value, f'Transfer to {category.name}')
+        if not withdraw_success:
+            return False
+
+        category.deposit(value, f'Transfer from {self.name}')
+        return True
+
 
 def create_spend_chart(categories):
     pass
@@ -31,5 +38,7 @@ def create_spend_chart(categories):
 if __name__ == '__main__':
     test = Category('Test')
     test.deposit(1000)
-    test.withdraw(500, 'withdraw')
-    print(test.get_balance())
+    test2 = Category('Test2')
+    test.transfer(1000, test2)
+    print(test.ledger)
+    print(test2.ledger)
