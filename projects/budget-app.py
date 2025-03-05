@@ -20,6 +20,9 @@ class Category:
         self._add_to_ledger(-value, 'withdraw')
         return True
 
+    def get_balance(self):
+        return self.value
+
 
 def create_spend_chart(categories):
     pass
@@ -29,5 +32,4 @@ if __name__ == '__main__':
     test = Category('Test')
     test.deposit(1000)
     test.withdraw(500)
-    test.withdraw(900)
-    print(test.name)
+    print(test.get_balance())
