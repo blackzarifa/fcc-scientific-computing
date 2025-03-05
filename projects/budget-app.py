@@ -18,6 +18,7 @@ class Category:
 
         self.value -= value
         self._add_to_ledger(-value, 'withdraw')
+        return True
 
 
 def create_spend_chart(categories):
