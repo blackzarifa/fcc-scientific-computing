@@ -7,12 +7,15 @@ class Category:
     def _add_to_ledger(self, amount, description):
         self.ledger.append({'amount': amount, 'description': description})
 
+    def check_funds(self, value):
+        return False if value > self.value else True
+
     def deposit(self, value, description=''):
         self.value += value
         self._add_to_ledger(value, description)
 
     def withdraw(self, value, description=''):
-        if value > self.value:
+        if self.check_funds(value):
             return False
 
         self.value -= value
