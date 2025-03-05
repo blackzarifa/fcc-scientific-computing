@@ -12,6 +12,13 @@ class Category:
         self.value += value
         self._add_to_ledger(value, 'deposit')
 
+    def withdraw(self, value):
+        if value > self.value:
+            return False
+
+        self.value -= value
+        self._add_to_ledger(-value, 'withdraw')
+
 
 def create_spend_chart(categories):
     pass
@@ -20,4 +27,6 @@ def create_spend_chart(categories):
 if __name__ == '__main__':
     test = Category('Test')
     test.deposit(1000)
+    test.withdraw(500)
+    test.withdraw(900)
     print(test.name)
