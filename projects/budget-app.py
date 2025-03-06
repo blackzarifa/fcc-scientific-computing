@@ -5,9 +5,16 @@ class Category:
         self.ledger = []
 
     def __str__(self):
-        title = self.name.center(30, '*')
+        str = self.name.center(30, '*')
 
-        return title
+        for item in self.ledger:
+            line = '\n' + item['description'].ljust(23, ' ')
+            line += f"{item['amount']:.2f}"
+            line = line[0:31]
+            str += line
+
+        str += '\n' + f"Total: {self.value:.2f}"
+        return str
 
     def _add_to_ledger(self, amount, description):
         self.ledger.append({'amount': amount, 'description': description})
