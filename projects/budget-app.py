@@ -20,7 +20,7 @@ class Category:
         self._add_to_ledger(value, description)
 
     def withdraw(self, value, description=''):
-        if self.check_funds(value):
+        if not self.check_funds(value):
             return False
 
         self.value -= value
@@ -45,7 +45,7 @@ def create_spend_chart(categories):
 
 if __name__ == '__main__':
     test = Category('Test')
-    test.deposit(1000)
+    test.deposit(1000, 'testing!!!!')
     test2 = Category('Test2')
     test.transfer(1000, test2)
     print(test)
