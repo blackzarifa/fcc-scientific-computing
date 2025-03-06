@@ -8,9 +8,12 @@ class Category:
         str = self.name.center(30, '*')
 
         for item in self.ledger:
-            line = '\n' + item['description'].ljust(23)
-            line += f"{item['amount']:.2f}"
-            line = line[0:31]
+            description = item['description']
+            if len(description) > 23:
+                description = description[:23]
+
+            amount = f"{item['amount']:.2f}".rjust(30 - len(description))
+            line = '\n' + description + amount
             str += line
 
         str += '\n' + f"Total: {self.get_balance():.2f}"
