@@ -4,6 +4,11 @@ class Category:
         self.value = 0
         self.ledger = []
 
+    def __str__(self):
+        title = self.name.center(30, '*')
+
+        return title
+
     def _add_to_ledger(self, amount, description):
         self.ledger.append({'amount': amount, 'description': description})
 
@@ -43,5 +48,5 @@ if __name__ == '__main__':
     test.deposit(1000)
     test2 = Category('Test2')
     test.transfer(1000, test2)
-    print(test.ledger)
-    print(test2.ledger)
+    print(test)
+    print(test2)
