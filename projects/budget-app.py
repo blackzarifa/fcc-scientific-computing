@@ -8,12 +8,12 @@ class Category:
         str = self.name.center(30, '*')
 
         for item in self.ledger:
-            line = '\n' + item['description'].ljust(23, ' ')
+            line = '\n' + item['description'].ljust(23)
             line += f"{item['amount']:.2f}"
             line = line[0:31]
             str += line
 
-        str += '\n' + f"Total: {self.value:.2f}"
+        str += '\n' + f"Total: {self.get_balance():.2f}"
         return str
 
     def _add_to_ledger(self, amount, description):
@@ -84,4 +84,5 @@ if __name__ == '__main__':
     test.deposit(1000, 'testing!!!!')
     test2 = Category('Test2')
     test.transfer(1000, test2)
+    print(test)
     print(create_spend_chart([test, test2]))
