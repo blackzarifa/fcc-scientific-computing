@@ -47,7 +47,36 @@ class Category:
 
 
 def create_spend_chart(categories):
-    pass
+    spent = []
+    for category in categories:
+        category_spent = 0
+        for item in category.ledger:
+            if item["amount"] < 0:
+                category_spent += abs(item["amount"])
+        spent.append(category_spent)
+
+    total = sum(spent)
+    percentages = [int((s / total) * 100) // 10 * 10 for s in spent]
+
+    string = 'Percentage spent by category\n'
+    for i in range(100, -10, -10):
+        string += str(i).rjust(3) + "| "
+        for percentage in percentages:
+            string += 'o  ' if percentage >= i else '   '
+        string += '\n'
+
+    string += '    ' + '-' * (len(categories) * 3 + 1) + '\n'
+    names = [category.name for category in categories]
+    max_length = max(len(name) for name in names)
+
+    for i in range(max_length):
+        string += '     '
+        for name in names:
+            string += name[i] + '  ' if i < len(name) else '   '
+        if i < max_length - 1:
+            string += '\n'
+
+    return string
 
 
 if __name__ == '__main__':
@@ -55,5 +84,4 @@ if __name__ == '__main__':
     test.deposit(1000, 'testing!!!!')
     test2 = Category('Test2')
     test.transfer(1000, test2)
-    print(test)
-    print(test2)
+    print(create_spend_chart([test, test2]))
