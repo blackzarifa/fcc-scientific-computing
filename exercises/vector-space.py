@@ -40,6 +40,9 @@ class R2Vector:
             return NotImplemented
         return all(getattr(self, i) == getattr(other, i) for i in vars(self))
 
+    def __ne__(self, other):
+        return not self == other
+
 
 class R3Vector(R2Vector):
     def __init__(self, *, x, y, z):
