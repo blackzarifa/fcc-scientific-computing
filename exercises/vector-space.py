@@ -35,6 +35,11 @@ class R2Vector:
             return sum(args)
         return NotImplemented
 
+    def __eq__(self, other):
+        if type(self) != type(other):
+            return NotImplemented
+        return all(getattr(self, i) == getattr(other, i) for i in vars(self))
+
 
 class R3Vector(R2Vector):
     def __init__(self, *, x, y, z):
