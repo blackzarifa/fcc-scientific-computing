@@ -20,6 +20,12 @@ class R2Vector:
         kwargs = {i: getattr(self, i) + getattr(other, i) for i in vars(self)}
         return self.__class__(**kwargs)
 
+    def __sub__(self, other):
+        if type(self) != type(other):
+            return NotImplemented
+        kwargs = {i: getattr(self, i) - getattr(other, i) for i in vars(self)}
+        return self.__class__(**kwargs)
+
 
 class R3Vector(R2Vector):
     def __init__(self, *, x, y, z):
