@@ -9,12 +9,12 @@ class Equation(ABC):
             raise TypeError(
                 f"'Equation' object takes {self.degree + 1} positional arguments but {len(args)} were given"
             )
-
         if any(not isinstance(arg, (int, float)) for arg in args):
             raise TypeError("Coefficients must be of type 'int' or 'float'")
-
         if args[0] == 0:
             raise ValueError("Highest degree coefficient must be different from zero")
+
+        self.coefficients = {(len(args) - n - 1): arg for n, arg in enumerate(args)}
 
     def __init_subclass__(cls):
         if not hasattr(cls, "degree"):
