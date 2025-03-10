@@ -54,3 +54,13 @@ class LinearEquation(Equation):
     def analyze(self):
         slope, intercept = self.coefficients.values()
         return {'slope': slope, 'intercept': intercept}
+
+
+class QuadraticEquation(Equation):
+    degree = 2
+
+    def solve(self):
+        pass
+
+    def analyze(self):
+        pass
