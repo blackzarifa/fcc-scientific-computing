@@ -52,4 +52,5 @@ class LinearEquation(Equation):
         return x
 
     def analyze(self):
-        pass
+        slope, intercept = self.coefficients.values()
+        return {'slope': slope, 'intercept': intercept}
