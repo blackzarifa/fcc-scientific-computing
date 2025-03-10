@@ -22,6 +22,18 @@ class Equation(ABC):
                 f"Cannot create '{cls.__name__}' class: missing required attribute 'degree'"
             )
 
+    def __str__(self):
+        terms = []
+        for n, coefficient in self.coefficients.items():
+            if not coefficient:
+                continue
+            if n == 0:
+                terms.append(f'{coefficient:+}')
+            elif n == 1:
+                terms.append(f'{coefficient:+}x')
+        equation_string = ' '.join(terms) + ' = 0'
+        return equation_string.strip('+')
+
     @abstractmethod
     def solve(self):
         pass
