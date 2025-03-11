@@ -52,7 +52,7 @@ class LinearEquation(Equation):
     def solve(self):
         a, b = self.coefficients.values()
         x = -b / a
-        return x
+        return [x]
 
     def analyze(self):
         slope, intercept = self.coefficients.values()
@@ -68,7 +68,15 @@ class QuadraticEquation(Equation):
         self.delta = b**2 - 4 * a * c
 
     def solve(self):
-        pass
+        if self.delta < 0:
+            return []
+        a, b, _ = self.coefficients.values()
+        x1 = (-b + (self.delta) ** 0.5) / (2 * a)
+        x2 = (-b - (self.delta) ** 0.5) / (2 * a)
+
+        if self.delta == 0:
+            return [x1]
+        return [x1, x2]
 
     def analyze(self):
         pass
