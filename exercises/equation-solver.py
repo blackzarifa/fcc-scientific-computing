@@ -59,6 +59,11 @@ class LinearEquation(Equation):
 class QuadraticEquation(Equation):
     degree = 2
 
+    def __init__(self, *args):
+        super().__init__(*args)
+        a, b, c = self.coefficients.values()
+        self.delta = b**2 - 4 * a * c
+
     def solve(self):
         pass
 
