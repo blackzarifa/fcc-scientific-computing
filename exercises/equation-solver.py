@@ -79,4 +79,15 @@ class QuadraticEquation(Equation):
         return [x1, x2]
 
     def analyze(self):
-        pass
+        a, b, c = self.coefficients.values()
+        x = -b / (2 * a)
+        y = a * x**2 + b * x + c
+
+        if a > 0:
+            concavity = 'upwards'
+            min_max = 'min'
+        else:
+            concavity = 'downwards'
+            min_max = 'max'
+
+        return {'x': x, 'y': y, 'min_max': min_max, 'concavity': concavity}
