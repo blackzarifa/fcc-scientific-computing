@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import re
 
 
 class Equation(ABC):
@@ -31,8 +32,10 @@ class Equation(ABC):
                 terms.append(f'{coefficient:+}')
             elif n == 1:
                 terms.append(f'{coefficient:+}x')
+            else:
+                terms.append(f"{coefficient:+}x**{n}")
         equation_string = ' '.join(terms) + ' = 0'
-        return equation_string.strip('+')
+        return re.sub(r"(?<!\d)1(?=x)", "", equation_string.strip("+"))
 
     @abstractmethod
     def solve(self):
