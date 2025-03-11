@@ -4,6 +4,7 @@ import re
 
 class Equation(ABC):
     degree: int
+    type: str
 
     def __init__(self, *args):
         if (self.degree + 1) != len(args):
@@ -97,3 +98,10 @@ class QuadraticEquation(Equation):
             min_max = 'max'
 
         return {'x': x, 'y': y, 'min_max': min_max, 'concavity': concavity}
+
+
+def solver(equation):
+    if not isinstance(equation, Equation):
+        raise TypeError("Argument must be an Equation object")
+    output_string = f'\n{equation.type:^24}'
+    return output_string
