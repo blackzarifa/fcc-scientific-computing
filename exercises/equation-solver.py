@@ -108,4 +108,13 @@ def solver(equation):
     output_string += f'\n\n{equation!s:^24}\n\n'
     output_string += f"{'Solutions':-^24}\n\n"
 
+    results = equation.solve()
+    match len(results):
+        case 0:
+            result_list = ['No real roots']
+        case 1:
+            result_list = [f'x = {results[0]:+}']
+        case 2:
+            result_list = [f'x1 = {results[0]:+}', f'x2 = {results[1]:+}']
+
     return output_string
