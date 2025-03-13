@@ -103,5 +103,9 @@ class QuadraticEquation(Equation):
 def solver(equation):
     if not isinstance(equation, Equation):
         raise TypeError("Argument must be an Equation object")
-    output_string = f'\n{equation.type:^24}'
+
+    output_string = f'\n{equation.type:-^24}'
+    output_string += f'\n\n{equation!s:^24}\n\n'
+    output_string += f"{'Solutions':-^24}\n\n"
+
     return output_string
