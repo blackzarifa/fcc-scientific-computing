@@ -116,9 +116,9 @@ def solver(equation):
             case 0:
                 result_list = ['No real roots']
             case 1:
-                result_list = [f'x = {results[0]:+}']
+                result_list = [f'x = {results[0]:+.3f}']
             case 2:
-                result_list = [f'x1 = {results[0]:+}', f'x2 = {results[1]:+}']
+                result_list = [f'x1 = {results[0]:+.3f}', f'x2 = {results[1]:+.3f}']
 
     for result in result_list:
         output_string += f'{result:^24}\n'
