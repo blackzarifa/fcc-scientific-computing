@@ -111,14 +111,13 @@ def solver(equation):
     results = equation.solve()
     result_list = []
 
-    if results is not None:
-        match len(results):
-            case 0:
-                result_list = ['No real roots']
-            case 1:
-                result_list = [f'x = {results[0]:+.3f}']
-            case 2:
-                result_list = [f'x1 = {results[0]:+.3f}', f'x2 = {results[1]:+.3f}']
+    match results:
+        case []:
+            result_list = ['No real roots']
+        case [x]:
+            result_list = [f'x = {x:+.3f}']
+        case [x1, x2]:
+            result_list = [f'x1 = {x1:+.3f}', f'x2 = {x2:+.3f}']
 
     for result in result_list:
         output_string += f'{result:^24}\n'
