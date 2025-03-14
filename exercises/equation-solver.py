@@ -122,4 +122,20 @@ def solver(equation):
     for result in result_list:
         output_string += f'{result:^24}\n'
 
+    output_string += f'\n{"Details":-^24}\n\n'
+
+    details = equation.analyze()
+    details_list = []
+
+    match details:
+        case {'slope': slope, 'intercept': intercept}:
+            details_list = [f'slope = {slope:.3f}', f'y-intercept = {intercept:.3f}']
+        case {'x': x, 'y': y, 'min_max': min_max, 'concavity': concavity}:
+            details_list = [
+                f'concavity = {concavity}',
+                f'{min_max} = ({x:.3f}, {y:.3f})',
+            ]
+    for detail in details_list:
+        output_string += f'{detail:}\n'
+
     return output_string
