@@ -18,6 +18,24 @@ class Rectangle:
     def get_diagonal(self):
         return (self.width**2 + self.height**2) ** 0.5
 
+    def get_picture(self):
+        if self.width > 50 or self.height > 50:
+            return 'Too big for picture.'
+
+        pic = ''
+        for i in range(self.height):
+            if i == 0 or i == self.height - 1:
+                pic += '*' * self.width + f'\n'
+                continue
+            pic += '*' + f"{'*':>{self.width - 1}}\n"
+
+        return pic
+
 
 class Square:
     pass
+
+
+if __name__ == '__main__':
+    rect = Rectangle(5, 6)
+    print(rect.get_picture())
