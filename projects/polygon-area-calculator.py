@@ -3,6 +3,9 @@ class Rectangle:
         self.width = width
         self.height = height
 
+    def __str__(self):
+        return f'{self.__class__.__name__}(width={self.width}, height={self.height})'
+
     def set_width(self, width):
         self.width = width
 
@@ -31,6 +34,9 @@ class Rectangle:
 
         return pic
 
+    def get_amount_inside(self, shape):
+        pass
+
 
 class Square:
     pass
@@ -38,4 +44,5 @@ class Square:
 
 if __name__ == '__main__':
     rect = Rectangle(5, 6)
+    print(rect)
     print(rect.get_picture())
