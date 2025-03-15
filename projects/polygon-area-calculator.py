@@ -38,11 +38,27 @@ class Rectangle:
         pass
 
 
-class Square:
-    pass
+class Square(Rectangle):
+    def __init__(self, side):
+        self.width = side
+        self.height = side
+
+    def __str__(self):
+        return f'{self.__class__.__name__}(side={self.width})'
+
+    def set_width(self, width):
+        self.set_side(width)
+
+    def set_height(self, height):
+        self.set_side(height)
+
+    def set_side(self, side):
+        self.width = side
+        self.height = side
 
 
 if __name__ == '__main__':
     rect = Rectangle(5, 6)
     print(rect)
-    print(rect.get_picture())
+    sqr = Square(5)
+    print(sqr.get_picture())
