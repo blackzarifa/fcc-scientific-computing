@@ -35,7 +35,9 @@ class Rectangle:
         return pic
 
     def get_amount_inside(self, shape):
-        pass
+        width_fit = self.width // shape.width
+        height_fit = self.height // shape.height
+        return width_fit * height_fit
 
 
 class Square(Rectangle):
