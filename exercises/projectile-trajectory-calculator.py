@@ -14,6 +14,15 @@ class Projectile:
         self.__height = height
         self.__angle = math.radians(angle)
 
+    def __str__(self):
+        return f'''
+Projectile details:
+speed: {self.__speed} m/s
+height: {self.__height} m
+angle: {round(math.degrees(self.__angle))}°
+displacement: {round(self.__calculate_displacement(), 1)} m
+'''
+
     def __calculate_displacement(self):
         horizontal_component = self.__speed * math.cos(self.__angle)
         vertical_component = self.__speed * math.sin(self.__angle)
