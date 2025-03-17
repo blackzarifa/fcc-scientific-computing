@@ -80,3 +80,13 @@ displacement: {round(self.__calculate_displacement(), 1)} m
 
     def __repr__(self):
         return f'{self.__class__.__name__}{self.speed, self.height,  self.angle}'
+
+
+class Graph:
+    __slots__ = '__coordinates'
+
+    def __init__(self, coord):
+        self.__coordinates = coord
+
+    def __repr__(self):
+        return f'Graph({self.__coordinates})'
