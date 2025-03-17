@@ -90,3 +90,10 @@ class Graph:
 
     def __repr__(self):
         return f'Graph({self.__coordinates})'
+
+    def create_coordinates_table(self):
+        table = '\n  x      y\n'
+        for x, y in self.__coordinates:
+            table += f'{x:>3}{y:>7.2f}\n'
+
+        return table
