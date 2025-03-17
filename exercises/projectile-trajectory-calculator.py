@@ -77,3 +77,6 @@ displacement: {round(self.__calculate_displacement(), 1)} m
     @angle.setter
     def angle(self, value):
         self.__angle = math.radians(value)
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}{self.speed, self.height,  self.angle}'
