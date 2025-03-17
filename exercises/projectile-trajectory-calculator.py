@@ -47,3 +47,33 @@ displacement: {round(self.__calculate_displacement(), 1)} m
         y_coordinate = height_component + angle_component - acceleration_component
 
         return y_coordinate
+
+    def calculate_all_coordinates(self):
+        return [
+            (x, self.__calculate_y_coordinate(x))
+            for x in range(math.ceil(self.__calculate_displacement()))
+        ]
+
+    @property
+    def speed(self):
+        return self.__speed
+
+    @property
+    def height(self):
+        return self.__height
+
+    @property
+    def angle(self):
+        return round(math.degrees(self.__angle))
+
+    @speed.setter
+    def speed(self, value):
+        self.__speed = value
+
+    @height.setter
+    def height(self, value):
+        self.__height = value
+
+    @angle.setter
+    def angle(self, value):
+        self.__angle = math.radians(value)
