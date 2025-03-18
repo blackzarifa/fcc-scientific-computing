@@ -97,3 +97,13 @@ class Graph:
             table += f'{x:>3}{y:>7.2f}\n'
 
         return table
+
+    def create_trajectory(self):
+        rounded_coords = [(round(x), round(y)) for x, y in self.__coordinates]
+
+        x_max = max(rounded_coords, key=lambda i: i[0])[0]
+        y_max = max(rounded_coords, key=lambda j: j[1])[1]
+
+        matrix_list = [[' '] * (x_max + 1)] * (y_max + 1)
+
+        return x_max, y_max
