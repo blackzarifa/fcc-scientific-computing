@@ -105,5 +105,7 @@ class Graph:
         y_max = max(rounded_coords, key=lambda j: j[1])[1]
 
         matrix_list = [[' '] * (x_max + 1)] * (y_max + 1)
+        for x, y in rounded_coords:
+            matrix_list[-y - 1][x] = PROJECTILE
 
         return x_max, y_max
