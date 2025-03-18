@@ -108,4 +108,8 @@ class Graph:
         for x, y in rounded_coords:
             matrix_list[-y - 1][x] = PROJECTILE
 
-        return x_max, y_max
+        matrix = ["".join(line) for line in matrix_list]
+        matrix_axes = [y_axis_tick + row for row in matrix]
+        matrix_axes.append(" " + x_axis_tick * (len(matrix[0])))
+
+        return matrix_axes
