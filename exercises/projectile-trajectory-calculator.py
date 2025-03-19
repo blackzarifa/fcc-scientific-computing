@@ -55,10 +55,6 @@ displacement: {round(self.__calculate_displacement(), 1)} m
         ]
 
     @property
-    def speed(self):
-        return self.__speed
-
-    @property
     def height(self):
         return self.__height
 
@@ -66,20 +62,24 @@ displacement: {round(self.__calculate_displacement(), 1)} m
     def angle(self):
         return round(math.degrees(self.__angle))
 
-    @speed.setter
-    def speed(self, value):
-        self.__speed = value
+    @property
+    def speed(self):
+        return self.__speed
 
     @height.setter
-    def height(self, value):
-        self.__height = value
+    def height(self, n):
+        self.__height = n
 
     @angle.setter
-    def angle(self, value):
-        self.__angle = math.radians(value)
+    def angle(self, n):
+        self.__angle = math.radians(n)
+
+    @speed.setter
+    def speed(self, s):
+        self.__speed = s
 
     def __repr__(self):
-        return f'{self.__class__.__name__}{self.speed, self.height,  self.angle}'
+        return f'{self.__class__}({self.speed}, {self.height}, {self.angle})'
 
 
 class Graph:
@@ -89,7 +89,7 @@ class Graph:
         self.__coordinates = coord
 
     def __repr__(self):
-        return f'Graph({self.__coordinates})'
+        return f"Graph({self.__coordinates})"
 
     def create_coordinates_table(self):
         table = '\n  x      y\n'
@@ -99,16 +99,19 @@ class Graph:
         return table
 
     def create_trajectory(self):
+
         rounded_coords = [(round(x), round(y)) for x, y in self.__coordinates]
 
         x_max = max(rounded_coords, key=lambda i: i[0])[0]
         y_max = max(rounded_coords, key=lambda j: j[1])[1]
 
-        matrix_list = [[' '] * (x_max + 1)] * (y_max + 1)
+        matrix_list = [[" " for _ in range(x_max + 1)] for _ in range(y_max + 1)]
+
         for x, y in rounded_coords:
-            matrix_list[-y - 1][x] = PROJECTILE
+            matrix_list[-1 - y][x] = PROJECTILE
 
         matrix = ["".join(line) for line in matrix_list]
+
         matrix_axes = [y_axis_tick + row for row in matrix]
         matrix_axes.append(" " + x_axis_tick * (len(matrix[0])))
 
