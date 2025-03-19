@@ -112,4 +112,6 @@ class Graph:
         matrix_axes = [y_axis_tick + row for row in matrix]
         matrix_axes.append(" " + x_axis_tick * (len(matrix[0])))
 
-        return matrix_axes
+        graph = "\n" + "\n".join(matrix_axes) + "\n"
+
+        return graph
