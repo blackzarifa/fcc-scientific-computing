@@ -11,16 +11,21 @@ class Hat:
 
     def draw(self, amount):
         removed_balls = []
-
         for i in range(amount):
             index = random.randint(0, len(self.contents) - 1)
             removed_balls.append(self.contents.pop(index))
-
         return removed_balls
 
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
-    pass
+    if num_experiments == 0:
+        return 0
+
+    got_expected = 0
+    for experiment in range(num_experiments):
+        pass
+
+    return got_expected / num_experiments
 
 
 if __name__ == '__main__':
