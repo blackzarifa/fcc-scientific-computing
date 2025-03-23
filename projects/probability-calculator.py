@@ -30,4 +30,5 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
 
 if __name__ == '__main__':
     hat1 = Hat(red=5, orange=4, black=1, blue=0, pink=2, striped=9)
-    hat1.draw(1)
+    expected_balls = {'red': 5}
+    print(experiment(hat1, expected_balls, 5, 1))
