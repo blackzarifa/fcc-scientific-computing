@@ -23,16 +23,29 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
 
     got_expected = 0
     for experiment in range(num_experiments):
-        drawn = hat.draw(num_balls_drawn)
+        hat_copy = copy.deepcopy(hat)
+        drawn = hat_copy.draw(num_balls_drawn)
+
         drawn_dict = {}
         for i in drawn:
-            drawn_dict[i] = drawn_dict[i] + 1 if i in drawn_dict else 1
-    print(drawn_dict)
+            drawn_dict[i] = drawn_dict.get(i, 0) + 1
+
+        all_met = True
+        for color, count in expected_balls.items():
+            if drawn_dict.get(color, 0) < count:
+                all_met = False
+                break
+
+        if all_met:
+            got_expected += 1
+
+        print(drawn_dict)
+        print(got_expected)
 
     return got_expected / num_experiments
 
 
 if __name__ == '__main__':
     hat1 = Hat(red=5, orange=4, black=1, blue=0, pink=2, striped=9)
-    expected_balls = {'red': 5}
-    print(experiment(hat1, expected_balls, 5, 1))
+    expected_balls = {'red': 2}
+    print(experiment(hat1, expected_balls, 5, 500))
