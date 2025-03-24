@@ -39,9 +39,6 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
         if all_met:
             got_expected += 1
 
-        print(drawn_dict)
-        print(got_expected)
-
     return got_expected / num_experiments
 
 
