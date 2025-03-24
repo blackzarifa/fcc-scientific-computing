@@ -6,8 +6,9 @@ class Hat:
     def __init__(self, **kwargs):
         self.contents = []
 
-        for key, _ in kwargs.items():
-            self.contents.append(key)
+        for key, value in kwargs.items():
+            for _ in range(value):
+                self.contents.append(key)
 
     def draw(self, amount):
         removed_balls = []
