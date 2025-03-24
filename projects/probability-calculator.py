@@ -5,7 +5,6 @@ import random
 class Hat:
     def __init__(self, **kwargs):
         self.contents = []
-
         for key, value in kwargs.items():
             for _ in range(value):
                 self.contents.append(key)
@@ -24,7 +23,11 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
 
     got_expected = 0
     for experiment in range(num_experiments):
-        pass
+        drawn = hat.draw(num_balls_drawn)
+        drawn_dict = {}
+        for i in drawn:
+            drawn_dict[i] = drawn_dict[i] + 1 if i in drawn_dict else 1
+    print(drawn_dict)
 
     return got_expected / num_experiments
 
