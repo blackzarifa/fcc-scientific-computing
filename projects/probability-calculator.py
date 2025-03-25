@@ -10,6 +10,9 @@ class Hat:
                 self.contents.append(key)
 
     def draw(self, amount):
+        if amount > len(self.contents):
+            return self.contents
+
         removed_balls = []
         for i in range(amount):
             index = random.randint(0, len(self.contents) - 1)
