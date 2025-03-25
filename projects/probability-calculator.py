@@ -11,7 +11,9 @@ class Hat:
 
     def draw(self, amount):
         if amount >= len(self.contents):
-            return self.contents
+            contents = self.contents
+            self.contents = []
+            return contents
 
         removed_balls = []
         for i in range(amount):
