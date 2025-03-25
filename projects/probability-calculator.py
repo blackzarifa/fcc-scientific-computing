@@ -10,7 +10,7 @@ class Hat:
                 self.contents.append(key)
 
     def draw(self, amount):
-        if amount > len(self.contents):
+        if amount >= len(self.contents):
             return self.contents
 
         removed_balls = []
